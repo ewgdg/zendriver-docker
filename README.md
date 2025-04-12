@@ -55,6 +55,19 @@ After making this change, you should be able to run the demo app with
 docker compose up --build app
 ```
 
+#### Nvidia driver
+
+Sway currently does not officially support nvidia (proprietary) driver.
+Despite some error messages, it might just work properly.
+
+1. Install `nvidia-container-toolkit` and configure it for docker.
+
+2. Run the demo app with
+
+```sh
+docker compose -f docker-compose.yml -f docker-compose.nvidia.yml up    
+```
+
 ## Usage
 
 This project is packaged with [`uv`](https://github.com/astral-sh/uv), linted with [`ruff`](https://github.com/astral-sh/ruff), and type-checked with [`mypy`](https://mypy-lang.org/).

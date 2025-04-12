@@ -37,5 +37,13 @@ RUN --mount=type=cache,target=/home/$DOCKER_USER/.cache/uv,uid=$PUID,gid=$PGID \
     uv sync --frozen
 
 USER root
+
+# add --unsupported-gpu flag to sway command
+ARG WAYVNC_UNSUPPORTED_GPU=false
+RUN if [ "$WAYVNC_UNSUPPORTED_GPU" = "true" ]; then \
+    sed -i 's/sway &/sway --unsupported-gpu \&/' /entrypoint_user.sh; \
+    fi
+
 # Pass custom command to entrypoint script provided by the base image
-ENTRYPOINT ["/entrypoint.sh", ".venv/bin/python", "app/main.py"]
+ENTRYPOINT ["/entrypoint.sh"]
+CMD [".venv/bin/python", "-m" ,"app.main"]
