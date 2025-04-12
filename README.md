@@ -65,7 +65,7 @@ Despite some error messages, it might just work properly.
 2. Run the demo app with
 
 ```sh
-docker compose -f docker-compose.yml -f docker-compose.nvidia.yml up    
+docker compose -f docker-compose.yml -f docker-compose.nvidia.yml up --build app   
 ```
 
 ## Usage
