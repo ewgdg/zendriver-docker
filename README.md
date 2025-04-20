@@ -71,7 +71,7 @@ docker compose -f docker-compose.yml -f docker-compose.nvidia.yml up --build app
 #### Chrome hardware acceleration
 
 Google-chrome might have limited support for some GPU drivers and thus disable hardware acceleration by default.
-visit "chrome://gpu/" to check.
+visit chrome://gpu/ to check.
 
 You might want to install the latest google-chrome to see if it helps by building a local swayvnc-chrome image or rerun the chrome install step at the beginning of the docker build process.
 
