@@ -7,7 +7,7 @@ RUN if [ "$ENABLE_XWAYLAND" = "true" ]; then \
     apt-get update && \
     apt-get -y install xwayland && \
     Xwayland -version && \
-    echo "Xwayland installed and configured."; \
+    echo "Xwayland installed."; \
     else \
     echo "Xwayland installation skipped."; \
     fi

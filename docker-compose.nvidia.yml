@@ -3,7 +3,6 @@ services:
     build:
       args:
         WAYVNC_UNSUPPORTED_GPU: true
-        ENABLE_XWAYLAND: true
     environment:
       - RENDER_GROUP_GID=
     deploy:
