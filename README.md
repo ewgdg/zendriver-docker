@@ -68,6 +68,33 @@ Despite some error messages, it might just work properly.
 docker compose -f docker-compose.yml -f docker-compose.nvidia.yml up --build app   
 ```
 
+#### Chrome hardware acceleration
+
+Google-chrome might have limited support for some GPU drivers and thus disable hardware acceleration by default.
+visit "chrome://gpu/" to check.
+
+You might want to install the latest google-chrome to see if it helps by building a local swayvnc-chrome image or rerun the chrome install step at the beginning of the docker build process.
+
+```dockerfile
+RUN curl -LO  https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb \
+    && apt-get install -y ./google-chrome-stable_current_amd64.deb \
+    && rm google-chrome-stable_current_amd64.deb
+```
+
+Optionally, you can force enable hardware acceleration by adding this browser arg `--ignore-gpu-blocklist`.
+
+You can also try to enable Xwayland for which google-chrome might have better support right now.
+
+1. In you docker-compose file, add a build arg `ENABLE_XWAYLAND`:
+
+   ```yaml
+   build:
+      args:
+         ENABLE_XWAYLAND: true
+   ```
+
+2. Either remove the browser arg `--ozone-platform=wayland` or replace it with `--ozone-platform=x11`.
+
 ## Usage
 
 This project is packaged with [`uv`](https://github.com/astral-sh/uv), linted with [`ruff`](https://github.com/astral-sh/ruff), and type-checked with [`mypy`](https://mypy-lang.org/).
