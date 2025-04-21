@@ -75,12 +75,6 @@ visit chrome://gpu/ to check.
 
 You might want to install the latest google-chrome to see if it helps by building a local swayvnc-chrome image or rerun the chrome install step at the beginning of the docker build process.
 
-```dockerfile
-RUN curl -LO  https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb \
-    && apt-get install -y ./google-chrome-stable_current_amd64.deb \
-    && rm google-chrome-stable_current_amd64.deb
-```
-
 Optionally, you can force enable hardware acceleration by adding this browser arg `--ignore-gpu-blocklist`.
 
 You can also try to enable Xwayland for which google-chrome might have better support right now.
